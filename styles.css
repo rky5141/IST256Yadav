@@ -1,0 +1,15 @@
+/* External stylesheet for ShopEase Online Store */
+
+h1 {
+    font-size: 2em;
+    color: darkblue;
+}
+
+h2 {
+    color: #444;
+}
+
+article svg, aside svg {
+    display: block;
+    margin: 10px 0;
+}

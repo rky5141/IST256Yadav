@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ShopEase Online Store</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Internal CSS -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header, footer {
+            padding: 15px;
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        nav {
+            width: 20%;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-bottom: 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            flex: 1;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+
+        aside {
+            width: 20%;
+            padding: 15px;
+            background-color: #eee;
+        }
+
+        article {
+            border: 1px solid #ccc;
+            background: white;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header style="background-color: lightblue;"> <!-- Inline CSS -->
+        <!-- SVG Logo -->
+        <svg width="60" height="60" style="vertical-align: middle;">
+            <rect width="60" height="60" fill="darkblue" />
+            <text x="50%" y="50%" font-size="20" fill="white" text-anchor="middle" alignment-baseline="middle">SE</text>
+        </svg>
+        <h1 style="display:inline; margin-left: 10px;">ShopEase Online Store</h1>
+    </header>
+
+    <!-- Page Layout -->
+    <div class="container">
+        
+        <!-- Navigation -->
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="cart.html">Shopping Cart</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Section -->
+        <section>
+            <h2>Featured Products</h2>
+
+            <article>
+                <h3>Wireless Headphones</h3>
+                <svg width="150" height="150">
+                    <rect width="150" height="150" fill="#ccc" />
+                    <text x="50%" y="50%" font-size="14" fill="#333" text-anchor="middle" alignment-baseline="middle">
+                        Headphones
+                    </text>
+                </svg>
+                <p>Now only <strong>$49.99</strong>! Crystal-clear sound with premium comfort.</p>
+            </article>
+
+            <article>
+                <h3>Smartwatch</h3>
+                <svg width="150" height="150">
+                    <rect width="150" height="150" fill="#ccc" />
+                    <text x="50%" y="50%" font-size="14" fill="#333" text-anchor="middle" alignment-baseline="middle">
+                        Smartwatch
+                    </text>
+                </svg>
+                <p>Special deal: <strong>$99.99</strong>. Track fitness, calls, and messages in style.</p>
+            </article>
+        </section>
+
+        <!-- Aside -->
+        <aside>
+            <h2>Special Offers</h2>
+            <svg width="180" height="100">
+                <rect width="180" height="100" fill="orange" />
+                <text x="50%" y="50%" font-size="16" fill="white" text-anchor="middle" alignment-baseline="middle">
+                    Ad Banner
+                </text>
+            </svg>
+            <p>Free shipping on orders over $50!</p>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            <a href="terms.html" style="color: darkblue;">Terms of Use</a> | 
+            <a href="privacy.html" style="color: darkblue;">Privacy Policy</a> | 
+            <a href="copyright.html" style="color: darkblue;">Copyright</a>
+        </p>
+        <p>&copy; 2025 ShopEase Online Store</p>
+    </footer>
+
+</body>
+</html>
