@@ -1,5 +1,6 @@
 // script.js
 
+// Function to validate individual fields
 function validateField(input) {
   const id = input.id;
   const value = input.value.trim();
@@ -10,12 +11,12 @@ function validateField(input) {
 
   let valid = true;
 
-  // Required field check
+  // Check if field is empty (required)
   if (value === "") {
     valid = false;
   }
 
-  // Special-case email format
+  // Special-case for email validation
   if (id === "email" && value !== "") {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(value)) {
@@ -23,15 +24,15 @@ function validateField(input) {
     }
   }
 
-  // Confirm password: must match password
+  // Confirm password: must match the password field
   if (id === "confirmPassword" && value !== "") {
-    const passVal = document.getElementById("password").value.trim();
-    if (value !== passVal || passVal === "") {
+    const passwordVal = document.getElementById("password").value.trim();
+    if (value !== passwordVal || passwordVal === "") {
       valid = false;
     }
   }
 
-  // Apply classes
+  // Apply appropriate styles based on validity
   if (!valid) {
     input.classList.add("is-invalid");
   } else {
@@ -41,12 +42,21 @@ function validateField(input) {
   return valid;
 }
 
+// Event listener to validate fields when user leaves input field
+document.querySelectorAll("input").forEach(input => {
+  input.addEventListener("focusout", function () {
+    validateField(input);
+  });
+});
+
+// Handle form submission and validate all fields
 document.getElementById("signupForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+  e.preventDefault(); // Stop form from submitting
 
   const fieldIds = ["username", "email", "password", "confirmPassword"];
   let allValid = true;
 
+  // Validate all fields
   fieldIds.forEach(id => {
     const fld = document.getElementById(id);
     const ok = validateField(fld);
@@ -55,10 +65,10 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
     }
   });
 
+  // If all fields are valid, submit the form (you could also submit to a server here)
   if (allValid) {
-    // All good → proceed (you may send data, redirect, etc.)
-    alert("Sign-up form is valid! You can now submit to server.");
-    // Optionally reset:
+    alert("Sign-up successful!");
+    // Optionally, clear form fields here if needed:
     // this.reset();
     // Clear validation classes
     fieldIds.forEach(id => {
@@ -66,6 +76,6 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
       fld.classList.remove("is-valid");
     });
   } else {
-    alert("Please fix the errors highlighted in red before submitting.");
+    alert("Please correct the errors before submitting.");
   }
 });
