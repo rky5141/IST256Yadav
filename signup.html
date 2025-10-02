@@ -2,72 +2,203 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sign Up | Rakesh ShopEase</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Your site CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <title>Sign Up | Rakesh Yadav StoreFront</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Inline styles from your index.html */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header, footer {
+      padding: 15px;
+      background-color: lightblue;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex: 1;
+    }
+
+    nav {
+      width: 20%;
+      background-color: #333;
+      color: white;
+      padding: 15px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-bottom: 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      flex: 1;
+      padding: 20px;
+      background-color: #f8f8f8;
+    }
+
+    aside {
+      width: 20%;
+      padding: 15px;
+      background-color: #eee;
+    }
+
+    article {
+      border: 1px solid #ccc;
+      background: white;
+      margin-bottom: 20px;
+      padding: 15px;
+    }
+
+    /* Form specific styles */
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 12px;
+      border: 1px solid #aaa;
+      border-radius: 3px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    input.invalid {
+      border-color: #dc3545;
+      background-color: #f8d7da;
+    }
+
+    .error-message {
+      color: #dc3545;
+      font-size: 13px;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    button {
+      background-color: lightblue;
+      border: none;
+      color: #333;
+      font-weight: bold;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #3399ff;
+      color: white;
+    }
+  </style>
 </head>
-<body class="bg-light">
+<body>
+  <!-- Header -->
+  <header>
+    <svg width="60" height="60" style="vertical-align: middle;">
+      <rect width="60" height="60" fill="darkblue"></rect>
+      <text x="50%" y="50%" font-size="20" fill="white" text-anchor="middle" alignment-baseline="middle">SE</text>
+    </svg>
+    <h1 style="display:inline; margin-left: 10px;">Rakesh ShopEase</h1>
+  </header>
 
-  <!-- Optionally include your site navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Rakesh ShopEase</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
-          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <!-- Page Layout -->
+  <div class="container">
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="signup.html" style="text-decoration: underline;">Sign Up</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="cart.html">Shopping Cart</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
 
-  <div class="container mt-5 mb-5">
-    <div class="card shadow">
-      <div class="card-header bg-primary text-white">
-        <h3>Create Your Account</h3>
-      </div>
-      <div class="card-body">
-        <form id="signupForm" novalidate>
-          <div class="mb-3">
-            <label for="username" class="form-label">Username *</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter username" />
-            <div class="invalid-feedback">Username is required.</div>
-          </div>
+    <!-- Main Section -->
+    <section>
+      <h2>Create Your Account</h2>
+      <form id="signupForm" novalidate>
+        <label for="username">Username *</label>
+        <input type="text" id="username" name="username" />
+        <div class="error-message" id="usernameError">Username is required.</div>
 
-          <div class="mb-3">
-            <label for="email" class="form-label">Email *</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" />
-            <div class="invalid-feedback">Please enter a valid email (e.g. joe@test.com).</div>
-          </div>
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" />
+        <div class="error-message" id="emailError">Please enter a valid email (e.g. joe@test.com).</div>
 
-          <div class="mb-3">
-            <label for="password" class="form-label">Password *</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter password" />
-            <div class="invalid-feedback">Password is required.</div>
-          </div>
+        <label for="password">Password *</label>
+        <input type="password" id="password" name="password" />
+        <div class="error-message" id="passwordError">Password is required.</div>
 
-          <div class="mb-3">
-            <label for="confirmPassword" class="form-label">Confirm Password *</label>
-            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" />
-            <div class="invalid-feedback">Passwords must match.</div>
-          </div>
+        <label for="confirmPassword">Confirm Password *</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" />
+        <div class="error-message" id="confirmPasswordError">Passwords must match.</div>
 
-          <button type="submit" class="btn btn-success">Sign Up</button>
-        </form>
-      </div>
-    </div>
+        <button type="submit">Sign Up</button>
+      </form>
+    </section>
+
+    <!-- Aside -->
+    <aside>
+      <h2>Special Offers</h2>
+      <svg width="180" height="100">
+        <rect width="180" height="100" fill="orange" />
+        <text x="50%" y="50%" font-size="16" fill="white" text-anchor="middle" alignment-baseline="middle">
+          Ad Banner
+        </text>
+      </svg>
+      <p>Free shipping on orders over $50!</p>
+    </aside>
   </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Your JS -->
+  <!-- Footer -->
+  <footer>
+    <p>
+      <a href="terms.html" style="color: darkblue;">Terms of Use</a> |
+      <a href="privacy.html" style="color: darkblue;">Privacy Policy</a> |
+      <a href="copyright.html" style="color: darkblue;">Copyright</a>
+    </p>
+    <p>&copy; 2025 ShopEase Online Store</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
