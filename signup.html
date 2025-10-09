@@ -5,7 +5,6 @@
   <title>Sign Up | Rakesh Yadav StoreFront</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Inline styles from your index.html */
     body {
       display: flex;
       flex-direction: column;
@@ -62,14 +61,6 @@
       background-color: #eee;
     }
 
-    article {
-      border: 1px solid #ccc;
-      background: white;
-      margin-bottom: 20px;
-      padding: 15px;
-    }
-
-    /* Form specific styles */
     form {
       max-width: 400px;
       margin: 0 auto;
@@ -100,14 +91,6 @@
     input.invalid {
       border-color: #dc3545;
       background-color: #f8d7da;
-    }
-
-    .error-message {
-      color: #dc3545;
-      font-size: 13px;
-      margin-top: -10px;
-      margin-bottom: 10px;
-      display: none;
     }
 
     button {
@@ -156,21 +139,17 @@
     <section>
       <h2>Create Your Account</h2>
       <form id="signupForm" novalidate>
-        <label for="username">Username *</label>
-        <input type="text" id="username" name="username" />
-        <div class="error-message" id="usernameError">Username is required.</div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" />
 
-        <label for="email">Email *</label>
-        <input type="email" id="email" name="email" />
-        <div class="error-message" id="emailError">Please enter a valid email (e.g. joe@test.com).</div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="e.g. you@example.com" />
 
-        <label for="password">Password *</label>
-        <input type="password" id="password" name="password" />
-        <div class="error-message" id="passwordError">Password is required.</div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a password" />
 
-        <label for="confirmPassword">Confirm Password *</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" />
-        <div class="error-message" id="confirmPasswordError">Passwords must match.</div>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" />
 
         <button type="submit">Sign Up</button>
       </form>
