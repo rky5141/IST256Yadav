@@ -1,22 +1,23 @@
-// script.js
+// Map of field IDs to validation messages
+const errorMessages = {
+  username: "Field required",
+  email: "Enter a valid email",
+  password: "Field required",
+  confirmPassword: "Passwords must match"
+};
 
-// Function to validate individual fields
+// Validate individual input
 function validateField(input) {
   const id = input.id;
   const value = input.value.trim();
-
-  // Reset state
-  input.classList.remove("is-invalid");
-  input.classList.remove("is-valid");
-
   let valid = true;
 
-  // Check if field is empty (required)
+  // Base validation
   if (value === "") {
     valid = false;
   }
 
-  // Special-case for email validation
+  // Email validation
   if (id === "email" && value !== "") {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(value)) {
@@ -24,7 +25,7 @@ function validateField(input) {
     }
   }
 
-  // Confirm password: must match the password field
+  // Password match
   if (id === "confirmPassword" && value !== "") {
     const passwordVal = document.getElementById("password").value.trim();
     if (value !== passwordVal || passwordVal === "") {
@@ -32,50 +33,46 @@ function validateField(input) {
     }
   }
 
-  // Apply appropriate styles based on validity
   if (!valid) {
-    input.classList.add("is-invalid");
+    input.classList.add("invalid");
+    input.dataset.originalPlaceholder = input.placeholder;
+    input.value = "";
+    input.placeholder = errorMessages[id] || "Invalid input";
+    input.style.color = "#888";
   } else {
-    input.classList.add("is-valid");
+    input.classList.remove("invalid");
+    input.style.color = ""; // reset to default
   }
 
   return valid;
 }
 
-// Event listener to validate fields when user leaves input field
+// Clear error tip when focusing input
 document.querySelectorAll("input").forEach(input => {
-  input.addEventListener("focusout", function () {
-    validateField(input);
+  input.addEventListener("focus", () => {
+    if (input.classList.contains("invalid")) {
+      input.placeholder = input.dataset.originalPlaceholder || "";
+      input.style.color = ""; // reset color
+    }
   });
+
+  input.addEventListener("blur", () => validateField(input));
 });
 
-// Handle form submission and validate all fields
+// Validate on form submission
 document.getElementById("signupForm").addEventListener("submit", function (e) {
-  e.preventDefault(); // Stop form from submitting
-
   const fieldIds = ["username", "email", "password", "confirmPassword"];
   let allValid = true;
 
-  // Validate all fields
   fieldIds.forEach(id => {
-    const fld = document.getElementById(id);
-    const ok = validateField(fld);
-    if (!ok) {
+    const input = document.getElementById(id);
+    const valid = validateField(input);
+    if (!valid) {
       allValid = false;
     }
   });
 
-  // If all fields are valid, submit the form (you could also submit to a server here)
-  if (allValid) {
-    alert("Sign-up successful!");
-    // Optionally, clear form fields here if needed:
-    // this.reset();
-    // Clear validation classes
-    fieldIds.forEach(id => {
-      const fld = document.getElementById(id);
-      fld.classList.remove("is-valid");
-    });
-  } else {
-    alert("Please correct the errors before submitting.");
+  if (!allValid) {
+    e.preventDefault(); // stop submission if invalid
   }
 });
